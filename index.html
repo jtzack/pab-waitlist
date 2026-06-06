@@ -24,7 +24,6 @@
       --stone-1: #F2F5F8;
       --stone-2: #E3E8EE;
       --stone-3: #CAD2DB;
-      --stone-4: #A2ADB8;
 
       /* ── Obsidian / graphite ── */
       --obsidian-0: #15181C;
@@ -38,11 +37,9 @@
       --laser-1: #FF1E1E;
       --laser-2: #E10E0E;
       --laser-3: #B00808;
-      --laser-4: #7A0606;
 
-      /* ── Pop pastels ── */
-      --sky: #93CFE8;
-      --sky-deep: #4E9BC4;
+      /* ── Sky — matched exactly to the statue PNG's baked background ── */
+      --sky: #92D8F8;
 
       /* ── On-dark text ── */
       --text-on-dark: #EAEEF3;
@@ -58,12 +55,10 @@
       --radius-sm: 4px;
       --radius-md: 6px;
       --radius-lg: 10px;
-      --shadow-hard: 4px 4px 0 var(--obsidian-0);
       --shadow-hard-lg: 7px 7px 0 var(--obsidian-0);
       --glow-laser-soft: 0 0 0 1px var(--laser-2), 0 0 22px rgba(255, 59, 48, 0.4);
       --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
       --dur-fast: 120ms;
-      --dur: 200ms;
     }
 
     html { scroll-behavior: smooth; }
@@ -81,7 +76,7 @@
 
     @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
 
-    /* ─── PAGE SHELL — nav rail + split hero, fills viewport ─── */
+    /* ─── PAGE SHELL ─── */
     .pab-page {
       display: grid;
       grid-template-rows: auto 1fr;
@@ -93,25 +88,20 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       border-bottom: 2px solid var(--obsidian-0);
-      position: sticky; top: 0; z-index: 50;
     }
     .pab-topbar-left {
       background: var(--obsidian-0);
       display: flex; align-items: center;
-      padding: 18px clamp(24px, 4vw, 64px);
+      padding: 14px clamp(24px, 4vw, 60px);
     }
     .pab-topbar-right {
       background: var(--sky);
       display: flex; align-items: center; justify-content: flex-end;
-      padding: 18px clamp(24px, 4vw, 64px);
+      padding: 14px clamp(24px, 4vw, 60px);
     }
-    .pab-brand {
-      display: inline-flex; align-items: center; gap: 14px;
-      text-decoration: none;
-    }
-    /* Laser-eye emblem — two glowing red dots in a chiseled square (logomark) */
+    .pab-brand { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; }
     .pab-emblem {
-      width: 40px; height: 40px;
+      width: 38px; height: 38px;
       border: 2.5px solid var(--stone-1);
       border-radius: var(--radius-sm);
       display: flex; align-items: center; justify-content: center;
@@ -125,7 +115,7 @@
     .pab-brand-word {
       font-family: var(--font-display);
       font-weight: 900;
-      font-size: clamp(15px, 1.4vw, 20px);
+      font-size: clamp(15px, 1.4vw, 19px);
       letter-spacing: 0.12em;
       color: var(--stone-0);
       text-transform: uppercase;
@@ -158,88 +148,87 @@
       min-height: 0;
     }
 
-    /* Left — content */
+    /* Left — content (vertically centered) */
     .pab-hero-left {
       background: var(--obsidian-0);
       display: flex; align-items: center;
-      padding: clamp(28px, 5vh, 72px) clamp(24px, 4vw, 64px);
+      padding: clamp(20px, 4vh, 48px) clamp(24px, 4vw, 60px);
+      min-height: 0;
     }
     .pab-hero-content {
       width: 100%;
-      max-width: 600px;
+      max-width: 560px;
       margin-left: auto;
     }
 
-    /* ─── DISPLAY HEADLINE (Cinzel, inscriptional caps) ─── */
+    /* Headline — sized off viewport height so it never overflows the fold */
     .pab-display {
       font-family: var(--font-display);
       font-weight: 900;
-      font-size: clamp(44px, 7vw, 116px);
-      line-height: 0.9;
+      font-size: clamp(34px, 6.2vh, 76px);
+      line-height: 0.92;
       letter-spacing: 0.005em;
       text-transform: uppercase;
       color: var(--stone-0);
-      margin: 0 0 clamp(20px, 3vh, 36px);
+      margin: 0 0 clamp(14px, 2.4vh, 28px);
     }
     .pab-display .pop { color: var(--laser-1); }
 
-    /* ─── SUBHEAD ─── */
+    /* Subhead */
     .pab-sub {
       font-family: var(--font-sans);
-      font-size: clamp(16px, 1.45vw, 22px);
+      font-size: clamp(14px, 1.9vh, 19px);
       line-height: 1.55;
       color: var(--text-on-dark-muted);
-      max-width: 500px;
-      margin: 0 0 clamp(22px, 3.5vh, 40px);
+      max-width: 460px;
+      margin: 0 0 clamp(18px, 3vh, 34px);
       text-wrap: pretty;
     }
     .pab-sub strong { color: var(--stone-0); font-weight: 700; }
     .pab-sub .accent { color: var(--laser-1); font-weight: 700; }
 
-    /* ─── FORM ─── */
+    /* Form */
     .pab-form-wrap { max-width: 560px; }
     .pab-form-label {
       display: flex; align-items: center; gap: 16px;
       font-family: var(--font-mono);
       font-weight: 700;
-      font-size: 12px;
+      font-size: clamp(11px, 1.3vh, 12px);
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--text-on-dark-muted);
-      margin-bottom: 14px;
+      margin-bottom: clamp(10px, 1.5vh, 14px);
+      white-space: nowrap;
     }
-    .pab-form-label .rule {
-      flex: 1; height: 1px;
-      background: var(--obsidian-3);
-    }
+    .pab-form-label .rule { flex: 1; height: 1px; background: var(--obsidian-3); }
 
-    /* ─── COUNTDOWN ─── */
-    .pab-cd { margin-top: clamp(24px, 4vh, 44px); max-width: 560px; }
+    /* Countdown */
+    .pab-cd { margin-top: clamp(18px, 3vh, 40px); max-width: 560px; }
     .pab-cd-label {
       font-family: var(--font-mono);
       font-weight: 700;
-      font-size: 12px;
+      font-size: clamp(11px, 1.3vh, 12px);
       letter-spacing: 0.18em;
       color: var(--text-on-dark-muted);
-      margin-bottom: 14px;
+      margin-bottom: clamp(10px, 1.5vh, 14px);
       text-transform: uppercase;
     }
     .pab-cd-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: clamp(8px, 1vw, 14px);
+      gap: clamp(8px, 1vw, 12px);
     }
     .pab-cd-unit {
       background: var(--obsidian-1);
       border: 1px solid var(--obsidian-2);
       border-radius: var(--radius-sm);
-      padding: clamp(12px, 1.6vh, 20px) 8px clamp(10px, 1.2vh, 14px);
+      padding: clamp(8px, 1.6vh, 18px) 8px clamp(7px, 1.2vh, 12px);
       text-align: center;
     }
     .pab-cd-num {
       font-family: var(--font-display);
       font-weight: 800;
-      font-size: clamp(26px, 3vw, 44px);
+      font-size: clamp(22px, 3.4vh, 40px);
       line-height: 1;
       color: var(--stone-0);
       font-variant-numeric: tabular-nums;
@@ -247,10 +236,10 @@
     .pab-cd-name {
       font-family: var(--font-mono);
       font-weight: 700;
-      font-size: 9px;
+      font-size: clamp(8px, 1vh, 9px);
       letter-spacing: 0.16em;
       color: var(--obsidian-4);
-      margin-top: 9px;
+      margin-top: clamp(5px, 1vh, 9px);
       text-transform: uppercase;
     }
 
@@ -261,23 +250,23 @@
       overflow: hidden;
       min-height: 0;
     }
+    /* Square statue, anchored bottom-centre; its baked #92D8F8 bg blends into the panel */
     .pab-statue {
       position: absolute;
       bottom: 0; left: 50%;
       transform: translateX(-50%);
-      width: clamp(260px, 30vw, 500px);
-      height: auto;
+      height: min(96%, 760px);
+      width: auto;
       display: block;
-      filter: saturate(0.95);
       z-index: 1;
     }
 
-    /* Wingman / Slack chat bubble — bigger, chiseled white card */
+    /* Wingman / Slack chat bubble — large chiseled white card near the head */
     .pab-quote {
       position: absolute;
-      top: clamp(28px, 8vh, 96px);
-      right: clamp(20px, 4vw, 72px);
-      width: clamp(300px, 26vw, 420px);
+      top: clamp(20px, 5vh, 56px);
+      right: clamp(16px, 3vw, 52px);
+      width: clamp(300px, 28vw, 440px);
       background: var(--stone-0);
       border: 2px solid var(--obsidian-0);
       border-radius: var(--radius-lg);
@@ -285,21 +274,17 @@
       padding: 18px 20px 20px;
       z-index: 3;
     }
-    /* speech tail, lower-left */
     .pab-quote::after {
       content: "";
       position: absolute;
-      bottom: -12px; left: 30px;
+      bottom: -11px; left: 34px;
       width: 18px; height: 18px;
       background: var(--stone-0);
       border-right: 2px solid var(--obsidian-0);
       border-bottom: 2px solid var(--obsidian-0);
       transform: rotate(45deg);
     }
-    .pab-quote-head {
-      display: flex; align-items: center; gap: 9px;
-      margin-bottom: 12px;
-    }
+    .pab-quote-head { display: flex; align-items: center; gap: 9px; margin-bottom: 12px; }
     .pab-quote-emblem {
       width: 26px; height: 26px;
       border: 2px solid var(--obsidian-0);
@@ -312,31 +297,15 @@
       background: var(--laser-1);
       box-shadow: 0 0 5px rgba(255,59,48,0.95);
     }
-    .pab-quote-name {
-      font-family: var(--font-sans);
-      font-weight: 700; font-size: 16px;
-      color: var(--obsidian-0); letter-spacing: 0.01em;
-    }
-    .pab-quote-app {
-      font-family: var(--font-sans);
-      font-size: 13px; color: var(--obsidian-4);
-    }
-    .pab-quote-time {
-      margin-left: auto;
-      font-family: var(--font-mono);
-      font-size: 11px; letter-spacing: 0.08em;
-      color: var(--obsidian-4);
-    }
-    .pab-quote-body {
-      font-family: var(--font-sans);
-      font-size: 16px; line-height: 1.5;
-      color: var(--obsidian-1);
-    }
+    .pab-quote-name { font-family: var(--font-sans); font-weight: 700; font-size: 16px; color: var(--obsidian-0); }
+    .pab-quote-app  { font-family: var(--font-sans); font-size: 13px; color: var(--obsidian-4); }
+    .pab-quote-time { margin-left: auto; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; color: var(--obsidian-4); }
+    .pab-quote-body { font-family: var(--font-sans); font-size: 16px; line-height: 1.5; color: var(--obsidian-1); }
     .pab-quote-body strong { font-weight: 700; color: var(--obsidian-0); }
     .pab-quote-body p { margin: 0; }
     .pab-quote-body p + p { margin-top: 12px; font-weight: 700; color: var(--obsidian-0); }
 
-    /* ─── KIT FORM OVERRIDES — restyles ConvertKit's injected DOM ─── */
+    /* ─── KIT FORM OVERRIDES ─── */
     .pab-form-wrap .formkit-form {
       background: transparent !important;
       border: none; border-radius: 0; padding: 0;
@@ -346,7 +315,6 @@
     .pab-form-wrap .formkit-form[data-uid="77c222d114"][min-width~="800"] [data-style="clean"],
     .pab-form-wrap .formkit-form [data-style="clean"] { padding: 0 !important; }
 
-    /* Input + button on one row */
     .pab-form-wrap .formkit-form .formkit-fields {
       display: flex !important;
       flex-direction: row !important;
@@ -355,18 +323,12 @@
       margin: 0 !important;
     }
     .pab-form-wrap .formkit-form .formkit-field {
-      flex: 1 1 auto !important;
-      width: auto !important;
-      margin: 0 !important;
-      min-width: 0;
+      flex: 1 1 auto !important; width: auto !important; margin: 0 !important; min-width: 0;
     }
     .pab-form-wrap .formkit-form .formkit-submit {
-      flex: 0 0 auto !important;
-      width: auto !important;
-      margin: 0 !important;
+      flex: 0 0 auto !important; width: auto !important; margin: 0 !important;
     }
 
-    /* Email input — white surface, charges laser on focus */
     .pab-form-wrap .formkit-form .formkit-input {
       background: var(--stone-0) !important;
       border: 2px solid var(--stone-0) !important;
@@ -375,7 +337,7 @@
       font-family: var(--font-sans) !important;
       font-size: 16px !important;
       font-weight: 500 !important;
-      padding: 16px 18px !important;
+      padding: 15px 18px !important;
       color: var(--obsidian-0) !important;
       width: 100% !important;
       height: 100% !important;
@@ -383,15 +345,12 @@
       letter-spacing: 0 !important;
       transition: box-shadow var(--dur-fast), border-color var(--dur-fast);
     }
-    .pab-form-wrap .formkit-form .formkit-input::placeholder {
-      color: var(--obsidian-4) !important; opacity: 1 !important;
-    }
+    .pab-form-wrap .formkit-form .formkit-input::placeholder { color: var(--obsidian-4) !important; opacity: 1 !important; }
     .pab-form-wrap .formkit-form .formkit-input:focus {
       border-color: var(--laser-2) !important;
       box-shadow: var(--glow-laser-soft) !important;
     }
 
-    /* Submit — laser button */
     .pab-form-wrap .formkit-form .formkit-submit {
       background: var(--laser-2) !important;
       color: var(--stone-0) !important;
@@ -404,28 +363,17 @@
       text-transform: uppercase !important;
       cursor: pointer;
       transition: transform var(--dur-fast) var(--ease-out),
-                  background-color var(--dur-fast) var(--ease-out),
-                  box-shadow var(--dur-fast) var(--ease-out);
+                  background-color var(--dur-fast) var(--ease-out);
       overflow: hidden;
     }
-    .pab-form-wrap .formkit-form .formkit-submit > span {
-      padding: 16px 26px !important;
-      white-space: nowrap;
-      display: block;
-    }
-    .pab-form-wrap .formkit-form .formkit-submit:hover {
-      background: var(--laser-1) !important;
-      color: var(--stone-0) !important;
-      transform: translateY(-1px);
-    }
+    .pab-form-wrap .formkit-form .formkit-submit > span { padding: 15px 26px !important; white-space: nowrap; display: block; }
+    .pab-form-wrap .formkit-form .formkit-submit:hover { background: var(--laser-1) !important; color: var(--stone-0) !important; transform: translateY(-1px); }
     .pab-form-wrap .formkit-form .formkit-submit:hover > span { background: transparent !important; }
     .pab-form-wrap .formkit-form .formkit-submit:active { transform: translateY(1px); }
 
-    /* Hide ConvertKit "Built with Kit" badge */
     .formkit-powered-by-convertkit-container,
     .formkit-powered-by-convertkit { display: none !important; }
 
-    /* Error alert */
     .pab-form-wrap .formkit-form .formkit-alert {
       margin: 0 0 10px !important;
       font-family: var(--font-sans);
@@ -436,57 +384,54 @@
       border-radius: var(--radius-sm) !important;
     }
 
-    /* ─── RESPONSIVE ─── */
-    /* Stack the split below tablet width */
+    /* ─── DESKTOP: lock to viewport, never scroll ─── */
+    @media (min-width: 901px) {
+      .pab-page { height: 100dvh; overflow: hidden; }
+      .pab-hero { overflow: hidden; }
+    }
+
+    /* ─── STACK below tablet width ─── */
     @media (max-width: 900px) {
       .pab-topbar { grid-template-columns: 1fr; }
       .pab-topbar-right { display: none; }
       .pab-hero { grid-template-columns: 1fr; }
       .pab-hero-left { order: 1; padding: clamp(28px, 5vh, 56px) clamp(20px, 6vw, 48px); }
       .pab-hero-content { max-width: 640px; margin: 0 auto; }
-      .pab-hero-right { order: 2; min-height: 56vh; }
-      .pab-statue { width: clamp(240px, 56vw, 420px); }
+      .pab-hero-right { order: 2; height: 60vh; min-height: 380px; }
+      .pab-statue { height: min(98%, 560px); }
       .pab-quote {
         top: clamp(20px, 4vh, 40px);
         right: clamp(16px, 5vw, 40px);
-        width: clamp(260px, 62vw, 360px);
+        width: clamp(260px, 60vw, 380px);
       }
-      .pab-display { font-size: clamp(44px, 12vw, 92px); }
+      /* restore comfortable type sizes when stacked (height no longer the constraint) */
+      .pab-display { font-size: clamp(48px, 11vw, 88px); margin-bottom: 22px; }
+      .pab-sub { font-size: clamp(16px, 2.4vw, 20px); margin-bottom: 28px; }
+      .pab-form-label, .pab-cd-label { font-size: 12px; margin-bottom: 14px; }
+      .pab-cd { margin-top: 36px; }
+      .pab-cd-num { font-size: clamp(28px, 6vw, 40px); }
+      .pab-cd-name { font-size: 9px; margin-top: 8px; }
     }
 
-    /* Phones — stack the form, tighten type */
+    /* ─── Phones ─── */
     @media (max-width: 560px) {
       .pab-topbar-left { padding: 14px 18px; }
       .pab-brand-word { font-size: 15px; letter-spacing: 0.08em; }
       .pab-emblem { width: 34px; height: 34px; gap: 5px; }
 
       .pab-hero-left { padding: 28px 18px 36px; }
-      .pab-display { font-size: clamp(40px, 14vw, 64px); line-height: 0.92; margin-bottom: 18px; }
+      .pab-display { font-size: clamp(40px, 14vw, 60px); margin-bottom: 18px; }
       .pab-sub { font-size: 16px; margin-bottom: 24px; }
 
       .pab-form-wrap .formkit-form .formkit-fields { flex-direction: column !important; }
       .pab-form-wrap .formkit-form .formkit-submit > span { padding: 15px 20px !important; }
 
-      .pab-cd-num { font-size: clamp(24px, 9vw, 36px); }
-      .pab-cd-name { font-size: 8px; letter-spacing: 0.12em; }
+      .pab-cd-num { font-size: clamp(24px, 9vw, 34px); }
 
-      .pab-hero-right { min-height: 48vh; }
-      .pab-statue { width: clamp(220px, 64vw, 320px); }
-      .pab-quote {
-        width: clamp(230px, 80vw, 320px);
-        padding: 14px 16px 16px;
-      }
-      .pab-quote-name { font-size: 15px; }
-      .pab-quote-body { font-size: 15px; }
-    }
-
-    /* Very short desktop viewports */
-    @media (max-height: 760px) and (min-width: 901px) {
-      .pab-hero-left { padding: 32px clamp(24px, 4vw, 64px); }
-      .pab-display { font-size: clamp(40px, 5.6vw, 84px); margin-bottom: 22px; }
-      .pab-sub { font-size: 17px; margin-bottom: 26px; }
-      .pab-cd { margin-top: 26px; }
-      .pab-statue { width: clamp(240px, 26vw, 420px); }
+      .pab-hero-right { height: 46vh; min-height: 300px; }
+      .pab-statue { height: min(98%, 440px); }
+      .pab-quote { width: clamp(230px, 82vw, 320px); padding: 14px 16px 16px; }
+      .pab-quote-name, .pab-quote-body { font-size: 15px; }
     }
   </style>
 </head>
