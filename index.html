@@ -112,6 +112,11 @@
       width: 7px; height: 7px; border-radius: 50%;
       background: var(--laser-1);
       box-shadow: 0 0 8px rgba(255,59,48,0.95);
+      animation: eye-pulse 2.8s ease-in-out infinite;
+    }
+    @keyframes eye-pulse {
+      0%, 100% { opacity: 1;   box-shadow: 0 0 8px rgba(255,59,48,0.95); }
+      50%      { opacity: 0.5; box-shadow: 0 0 4px rgba(255,59,48,0.45); }
     }
     .pab-brand-word {
       font-family: var(--font-display);
@@ -251,9 +256,9 @@
        #92D8F8 bg blends into the panel */
     .pab-statue {
       position: absolute;
-      bottom: clamp(-150px, -10vh, -50px);
-      right: clamp(-200px, -7.5vw, -80px);
-      height: min(90%, 720px);
+      bottom: clamp(-120px, -8vh, -40px);
+      right: clamp(-160px, -6vw, -60px);
+      height: min(70%, 560px);
       width: auto;
       display: block;
       z-index: 1;
@@ -451,7 +456,6 @@
           <span class="pab-brand-text">
             <span class="pab-brand-word">Personal Agent Bootcamp</span>
             <span class="pab-status">
-              <span class="pab-pulse" aria-hidden="true"></span>
               <span>Enrollment Opens June 15th</span>
             </span>
           </span>
