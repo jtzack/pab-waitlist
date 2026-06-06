@@ -419,6 +419,9 @@
         padding: 14px clamp(18px, 5vw, 48px);
       }
       .pab-status { display: none; }       /* date now lives in the pill + countdown */
+      /* fewer blinking lights on mobile: emblem eyes glow steadily, leaving
+         only the pill dot pulsing */
+      .pab-emblem span { animation: none; }
       .pab-date-pill {
         display: inline-flex; align-items: center; gap: 8px;
         border: 1.5px solid var(--obsidian-3);
