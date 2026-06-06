@@ -3,641 +3,542 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Self-Publishing Studio — Waitlist</title>
-  <meta name="description" content="Want to write a non-fiction book that pays you for the next 10 years? A 2-week live program to help you write, publish, and market a non-fiction book that builds your business. Join the waitlist." />
-  <meta property="og:title" content="Self-Publishing Studio — Waitlist" />
-  <meta property="og:description" content="A 2-week live program to help you write, publish, and market a non-fiction book that builds your business. Enrollment opens May 25th." />
+  <title>Personal Agent Bootcamp — Waitlist</title>
+  <meta name="description" content="Every hero needs a Wingman. A 2-week live program to help you build, deploy, and package a personal agent you can sell. Join the waitlist." />
+  <meta property="og:title" content="Personal Agent Bootcamp — Waitlist" />
+  <meta property="og:description" content="A 2-week live program to help you build, deploy, and package a personal agent you can sell. Enrollment opens June 15th." />
   <meta property="og:type" content="website" />
-  <link rel="icon" href="assets/bookshelf-mark.svg" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet" />
+  <!-- PAB design system typefaces: Cinzel (display) · Space Grotesk (sans) · Space Mono (mono) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      /* Ink — navy / dark surfaces */
-      --ink-950: #08111F;
-      --ink-900: #0C1929;
-      --ink-800: #142539;
-      --ink-700: #1E3550;
-      --ink-600: #2A4566;
-      --ink-500: #3E5C82;
-      --ink-400: #5A78A0;
-      --ink-300: #8AA0C0;
-      --ink-200: #B5C4D9;
-      --ink-100: #DDE5F0;
+      /* ── Stone / cool marble ── */
+      --stone-0: #FFFFFF;
+      --stone-1: #F2F5F8;
+      --stone-2: #E3E8EE;
+      --stone-3: #CAD2DB;
 
-      /* Butter — primary brand yellow */
-      --butter-700: #B8A648;
-      --butter-600: #D8C25A;
-      --butter-500: #EFE183;
-      --butter-400: #F4E89A;
-      --butter-300: #F8F0B8;
+      /* ── Obsidian / graphite ── */
+      --obsidian-0: #15181C;
+      --obsidian-1: #21262C;
+      --obsidian-2: #343B43;
+      --obsidian-3: #565F69;
+      --obsidian-4: #828C97;
 
-      /* Paper — warm off-white */
-      --paper-100: #FBF7EC;
-      --paper-200: #F5EEDA;
-      --paper-300: #ECE2C2;
+      /* ── Laser red (the signature charge) ── */
+      --laser-glow: #FF3B30;
+      --laser-1: #FF1E1E;
+      --laser-2: #E10E0E;
+      --laser-3: #B00808;
 
-      /* Accent */
-      --rust-500: #B8633A;
+      /* ── Sky — matched exactly to the statue PNG's baked background ── */
+      --sky: #92D8F8;
 
-      /* Type stack */
-      --font-display: "Anton", "Bebas Neue", "Impact", system-ui, sans-serif;
-      --font-sans:    "Inter", system-ui, -apple-system, sans-serif;
-      --font-serif:   "Newsreader", "Iowan Old Style", Georgia, serif;
+      /* ── On-dark text ── */
+      --text-on-dark: #EAEEF3;
+      --text-on-dark-muted: #AEB8C3;
+
+      /* ── Type stack ── */
+      --font-display: 'Cinzel', 'Times New Roman', serif;
+      --font-sans:    'Space Grotesk', system-ui, -apple-system, sans-serif;
+      --font-mono:    'Space Mono', 'SF Mono', ui-monospace, monospace;
+
+      /* ── Effects ── */
+      --radius-xs: 2px;
+      --radius-sm: 4px;
+      --radius-md: 6px;
+      --radius-lg: 10px;
+      --shadow-hard-lg: 7px 7px 0 var(--obsidian-0);
+      --glow-laser-soft: 0 0 0 1px var(--laser-2), 0 0 22px rgba(255, 59, 48, 0.4);
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+      --dur-fast: 120ms;
     }
 
     html { scroll-behavior: smooth; }
-    ::selection { background: var(--butter-500); color: var(--ink-900); }
+    ::selection { background: var(--laser-2); color: var(--stone-0); }
 
     body {
       font-family: var(--font-sans);
-      background: var(--ink-900);
-      color: var(--paper-100);
+      background: var(--obsidian-0);
+      color: var(--text-on-dark);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       min-height: 100dvh;
       line-height: 1.5;
     }
 
-    @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
 
-    /* ─── SHELL — fills the viewport, never scrolls ─── */
-    .sps-root {
-      display: flex;
-      flex-direction: column;
+    /* ─── PAGE SHELL ─── */
+    .pab-page {
+      display: grid;
+      grid-template-rows: auto 1fr;
       min-height: 100dvh;
-      background: var(--ink-900);
     }
 
-    /* ─── TOP NAV ─── */
-    .sps-nav {
-      position: sticky; top: 0; z-index: 50;
-      background: var(--ink-900);
-      border-bottom: 1px solid var(--ink-700);
-      flex: 0 0 auto;
+    /* ─── TOP BAR — split dark/sky, single 2px ink rule beneath ─── */
+    .pab-topbar {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
     }
-    .sps-nav-inner {
-      max-width: 1200px; margin: 0 auto;
-      padding: 14px 32px;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 16px;
+    .pab-topbar-left {
+      background: var(--obsidian-0);
+      display: flex; align-items: center;
+      padding: 14px clamp(24px, 4vw, 60px);
+      border-bottom: 2px solid var(--obsidian-0);
     }
-    .sps-brand {
-      display: inline-flex; align-items: center; gap: 12px;
-      text-decoration: none;
+    .pab-topbar-right {
+      background: var(--sky);
+      display: flex; align-items: center; justify-content: flex-end;
+      padding: 14px clamp(24px, 4vw, 60px);
     }
-    .sps-brand-mark {
-      width: 34px; height: 34px;
-      border-radius: 2px;
-      display: block;
+    .pab-brand { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; }
+    .pab-brand-text { display: flex; flex-direction: column; gap: 7px; }
+    .pab-emblem {
+      width: 38px; height: 38px;
+      border: 2.5px solid var(--stone-1);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      gap: 6px; flex: 0 0 auto;
     }
-    .sps-brand-word {
+    .pab-emblem span {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--laser-1);
+      box-shadow: 0 0 8px rgba(255,59,48,0.95);
+      animation: eye-pulse 2.8s ease-in-out infinite;
+    }
+    @keyframes eye-pulse {
+      0%, 100% { opacity: 1;   box-shadow: 0 0 8px rgba(255,59,48,0.95); }
+      50%      { opacity: 0.5; box-shadow: 0 0 4px rgba(255,59,48,0.45); }
+    }
+    .pab-brand-word {
       font-family: var(--font-display);
-      font-size: 22px;
-      letter-spacing: 0.02em;
-      color: var(--butter-500);
+      font-weight: 900;
+      font-size: clamp(15px, 1.4vw, 19px);
+      letter-spacing: 0.12em;
+      color: var(--stone-0);
       text-transform: uppercase;
       line-height: 1;
     }
-    .sps-nav-status {
-      display: inline-flex; align-items: center; gap: 10px;
-      font: 700 12px/1 var(--font-sans);
-      letter-spacing: 0.08em;
-      color: var(--paper-200);
+    .pab-status {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: clamp(10px, 0.85vw, 12px);
+      letter-spacing: 0.16em;
+      color: var(--text-on-dark-muted);
       text-transform: uppercase;
     }
-    .sps-pulse {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--butter-500);
-      box-shadow: 0 0 10px var(--butter-500);
+    .pab-pulse {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--laser-1);
+      box-shadow: 0 0 8px rgba(255,59,48,0.95);
       animation: pulse-dot 1.6s ease-in-out infinite;
     }
 
-    /* ─── HERO — vertically centered, fits in remaining viewport ─── */
-    .sps-hero {
-      position: relative;
-      overflow: hidden;
-      flex: 1;
-      background: var(--ink-900);
-      display: flex;
-      align-items: center;
-    }
-    .sps-hero-texture {
-      position: absolute; inset: 0;
-      background: url('assets/book-pattern.svg') center/600px repeat;
-      opacity: 0.4;
-      -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 100%);
-              mask-image: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 100%);
-      pointer-events: none;
-      z-index: 0;
-    }
-    .sps-hero-inner {
-      position: relative; z-index: 1;
-      max-width: 1200px; margin: 0 auto;
-      width: 100%;
-      padding: clamp(16px, 3vh, 36px) clamp(20px, 3vw, 32px);
+    /* ─── HERO — split: dark content left, sky statue right ─── */
+    .pab-hero {
       display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: clamp(20px, 3vw, 40px);
-      align-items: center;
+      grid-template-columns: 1fr 1fr;
+      min-height: 0;
     }
 
-    /* ─── DISPLAY HEADLINE ─── */
-    .sps-display {
+    /* Left — content (vertically centered) */
+    .pab-hero-left {
+      background: var(--obsidian-0);
+      display: flex; align-items: center;
+      padding: clamp(20px, 4vh, 48px) clamp(20px, 3vw, 48px);
+      min-height: 0;
+    }
+    .pab-hero-content {
+      width: 100%;
+      max-width: 800px;
+      margin-left: auto;
+    }
+
+    /* Headline — sized off viewport height so it never overflows the fold */
+    .pab-display {
       font-family: var(--font-display);
-      font-weight: 400;
-      font-size: clamp(34px, 5.4vw, 76px);
-      line-height: 0.94;
-      letter-spacing: -0.005em;
+      font-weight: 900;
+      font-size: clamp(34px, 3.95vw, 74px);
+      line-height: 0.95;
+      letter-spacing: 0.005em;
       text-transform: uppercase;
-      color: var(--paper-100);
-      margin: 0 0 clamp(10px, 1.8vh, 20px);
-      text-wrap: balance;
+      color: var(--stone-0);
+      margin: 0 0 clamp(14px, 2.4vh, 28px);
     }
-    .sps-display .pop { color: var(--butter-500); }
+    .pab-display .pop { color: var(--laser-1); }
 
-    /* ─── LEDE ─── */
-    .sps-lede {
-      font-family: var(--font-serif);
-      font-size: clamp(15px, 1.3vw, 18px);
-      line-height: 1.45;
-      color: var(--paper-100);
-      max-width: 560px;
-      margin: 0 0 clamp(8px, 1.4vh, 14px);
+    /* Subhead */
+    .pab-sub {
+      font-family: var(--font-sans);
+      font-size: clamp(14px, 2vh, 19px);
+      line-height: 1.55;
+      color: var(--text-on-dark-muted);
+      /* a touch narrower than the headline's longest line (~38vw) */
+      max-width: min(540px, 36vw);
+      margin: 0 0 clamp(18px, 3vh, 34px);
       text-wrap: pretty;
     }
-    .sps-lede em {
-      font-style: italic;
-      color: var(--butter-500);
-    }
-    .sps-lede strong {
-      color: var(--butter-500);
-      font-weight: 600;
-    }
+    .pab-sub strong { color: var(--stone-0); font-weight: 700; }
+    .pab-sub .accent { color: var(--laser-1); font-weight: 700; }
 
-    /* ─── SUB-LEDE (launch announcement) ─── */
-    .sps-sublede {
-      font-family: var(--font-sans);
-      font-size: clamp(13px, 1vw, 15px);
-      line-height: 1.5;
-      color: var(--ink-200);
-      max-width: 560px;
-      margin: 0 0 clamp(12px, 2vh, 22px);
-    }
-    .sps-sublede strong {
-      color: var(--paper-100);
+    /* Form */
+    .pab-form-wrap { max-width: 560px; }
+    .pab-form-label {
+      display: flex; align-items: center; gap: 16px;
+      font-family: var(--font-mono);
       font-weight: 700;
-    }
-
-    /* ─── FORM ─── */
-    .sps-form-wrap { max-width: 540px; }
-    .sps-form-label {
-      font: 700 11px/1 var(--font-sans);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-300);
-      margin-bottom: 8px;
-    }
-
-    /* ─── FINE PRINT ─── */
-    .sps-fineprint {
-      margin-top: 18px;
-      font: 600 13px/1.4 var(--font-sans);
-      letter-spacing: 0.02em;
-      color: var(--ink-300);
-      max-width: 540px;
-    }
-    .sps-fineprint .accent { color: var(--butter-500); }
-
-    /* ─── COUNTDOWN ─── */
-    .sps-cd {
-      margin-top: clamp(12px, 2vh, 20px);
-      max-width: 540px;
-    }
-    .sps-cd-label {
-      font: 700 10px/1 var(--font-sans);
+      font-size: clamp(11px, 1.3vh, 12px);
       letter-spacing: 0.18em;
-      color: var(--ink-300);
-      margin-bottom: 8px;
       text-transform: uppercase;
+      color: var(--text-on-dark-muted);
+      margin-bottom: clamp(10px, 1.5vh, 14px);
+      white-space: nowrap;
+    }
+    .pab-form-label .rule { flex: 1; height: 1px; background: var(--obsidian-3); }
+
+    /* Countdown */
+    .pab-cd { margin-top: clamp(18px, 3vh, 40px); max-width: 560px; }
+    .pab-cd-label {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: clamp(11px, 1.3vh, 12px);
+      letter-spacing: 0.18em;
+      color: var(--text-on-dark-muted);
+      margin-bottom: clamp(10px, 1.5vh, 14px);
+      text-transform: uppercase;
+    }
+    .pab-cd-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(8px, 1vw, 12px);
+    }
+    .pab-cd-unit {
+      background: var(--obsidian-1);
+      border: 1px solid var(--obsidian-2);
+      border-radius: var(--radius-sm);
+      padding: clamp(8px, 1.6vh, 18px) 8px clamp(7px, 1.2vh, 12px);
       text-align: center;
     }
-    .sps-cd-grid {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 4px;
-    }
-    .sps-cd-unit {
-      flex: 1;
-      background: var(--ink-800);
-      border: 1px solid var(--ink-700);
-      border-radius: 3px;
-      padding: 8px 6px 6px;
-      text-align: center;
-    }
-    .sps-cd-num {
+    .pab-cd-num {
       font-family: var(--font-display);
-      font-weight: 400;
-      font-size: clamp(22px, 2.2vw, 30px);
+      font-weight: 800;
+      font-size: clamp(22px, 3.4vh, 40px);
       line-height: 1;
-      color: var(--butter-500);
+      color: var(--stone-0);
       font-variant-numeric: tabular-nums;
-      letter-spacing: 0.01em;
     }
-    .sps-cd-name {
-      font: 700 9px/1 var(--font-sans);
-      letter-spacing: 0.14em;
-      color: var(--ink-300);
-      margin-top: 6px;
+    .pab-cd-name {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: clamp(8px, 1vh, 9px);
+      letter-spacing: 0.16em;
+      color: var(--obsidian-4);
+      margin-top: clamp(5px, 1vh, 9px);
       text-transform: uppercase;
     }
-    .sps-cd-sep {
-      color: var(--ink-500);
-      font-family: var(--font-display);
-      font-size: 22px;
-      font-weight: 400;
-      padding-bottom: 6px;
-    }
 
-    /* ─── RIGHT COLUMN: PRODUCT RENDER ─── */
-    .sps-product {
-      display: flex; justify-content: center; align-items: center;
+    /* ─── RIGHT — sky field + statue + wingman quote ─── */
+    .pab-hero-right {
+      position: relative;
+      background: var(--sky);
+      overflow: hidden;
+      min-height: 0;
     }
-    .sps-product img {
-      max-width: 100%;
-      width: 380px;
-      height: auto;
-      filter: drop-shadow(20px 30px 40px rgba(0,0,0,0.6));
-      transform: rotate(-2deg);
-      transition: transform 280ms cubic-bezier(.16,.84,.36,1);
-    }
-    .sps-product img:hover { transform: rotate(0deg) scale(1.02); }
-
-    /* Mobile-only inline product render, sits between the two paragraphs */
-    .sps-product-mobile { display: none; }
-    .sps-product-mobile img {
+    /* Square statue, anchored bottom-right & bleeding off the edge; its baked
+       #92D8F8 bg blends into the panel */
+    .pab-statue {
+      position: absolute;
+      bottom: clamp(-70px, -4vh, -20px);
+      right: clamp(-160px, -6vw, -60px);
+      height: min(70%, 560px);
+      width: auto;
       display: block;
-      margin: 0 auto;
-      width: clamp(100px, 16vh, 150px);
+      z-index: 1;
+    }
+
+    /* Wingman / Slack chat bubble — large chiseled white card to the LEFT of the
+       statue, tail pointing right toward him */
+    .pab-quote {
+      position: absolute;
+      top: clamp(72px, 19%, 185px);
+      left: clamp(40px, 6vw, 130px);
+      width: clamp(320px, 22vw, 460px);
+      background: var(--stone-0);
+      border: 2px solid var(--obsidian-0);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-hard-lg);
+      padding: 20px 24px 22px;
+      z-index: 3;
+    }
+    /* long comic tail pointing down-right toward the statue (overlaps the
+       bubble's bottom border by a few px so the join reads as one shape) */
+    .pab-quote-tail {
+      position: absolute;
+      right: 44px;
+      top: calc(100% - 6px);
+      width: clamp(78px, 7vw, 108px);
       height: auto;
-      transform: rotate(-2deg);
-      filter: drop-shadow(0 12px 18px rgba(0,0,0,0.35));
+      display: block;
+      z-index: 4;
+      pointer-events: none;
     }
+    .pab-quote-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    .pab-quote-emblem {
+      width: 30px; height: 30px;
+      border: 2px solid var(--obsidian-0);
+      border-radius: var(--radius-xs);
+      display: flex; align-items: center; justify-content: center;
+      gap: 4px; flex: 0 0 auto;
+    }
+    .pab-quote-emblem span {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--laser-1);
+      box-shadow: 0 0 5px rgba(255,59,48,0.95);
+    }
+    .pab-quote-name { font-family: var(--font-sans); font-weight: 700; font-size: 18px; color: var(--obsidian-0); }
+    .pab-quote-app  { font-family: var(--font-sans); font-size: 14px; color: var(--obsidian-4); }
+    .pab-quote-time { margin-left: auto; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; color: var(--obsidian-4); }
+    .pab-quote-body { font-family: var(--font-sans); font-size: 17px; line-height: 1.55; color: var(--obsidian-1); }
+    .pab-quote-body strong { font-weight: 700; color: var(--obsidian-0); }
+    .pab-quote-body p { margin: 0; }
+    .pab-quote-body p + p { margin-top: 14px; font-weight: 700; color: var(--obsidian-0); }
 
-    /* ─── KIT FORM OVERRIDES — restyles ConvertKit's injected DOM ─── */
-    .sps-form-wrap .formkit-form {
+    /* ─── KIT FORM OVERRIDES ─── */
+    .pab-form-wrap .formkit-form {
       background: transparent !important;
-      border: 1px solid rgba(240,228,208,0.18);
-      border-radius: 3px;
-      padding: 6px;
-      transition: border-color 200ms;
-      max-width: 540px;
-      margin: 0;
+      border: none; border-radius: 0; padding: 0;
+      max-width: 560px; margin: 0;
     }
-    .sps-form-wrap .formkit-form:focus-within {
-      border-color: var(--butter-500);
-    }
+    .pab-form-wrap .formkit-form [data-style="clean"] { padding: 0 !important; }
 
-    /* Reset CK's inner clean-style padding */
-    .sps-form-wrap .formkit-form[data-uid="77c222d114"][min-width~="700"] [data-style="clean"],
-    .sps-form-wrap .formkit-form[data-uid="77c222d114"][min-width~="800"] [data-style="clean"],
-    .sps-form-wrap .formkit-form [data-style="clean"] {
-      padding: 0 !important;
-    }
-
-    /* Stack input above button */
-    .sps-form-wrap .formkit-form .formkit-fields {
+    .pab-form-wrap .formkit-form .formkit-fields {
       display: flex !important;
-      flex-direction: column !important;
+      flex-direction: row !important;
       align-items: stretch !important;
-      gap: 6px !important;
+      gap: 10px !important;
       margin: 0 !important;
     }
-    .sps-form-wrap .formkit-form .formkit-field,
-    .sps-form-wrap .formkit-form .formkit-submit,
-    .sps-form-wrap .formkit-form[data-uid="77c222d114"][min-width~="700"] .formkit-fields[data-stacked="false"] .formkit-field,
-    .sps-form-wrap .formkit-form[data-uid="77c222d114"][min-width~="800"] .formkit-fields[data-stacked="false"] .formkit-field,
-    .sps-form-wrap .formkit-form[data-uid="77c222d114"][min-width~="700"] .formkit-fields[data-stacked="false"] .formkit-submit,
-    .sps-form-wrap .formkit-form[data-uid="77c222d114"][min-width~="800"] .formkit-fields[data-stacked="false"] .formkit-submit {
-      flex: 1 0 100% !important;
-      width: 100% !important;
-      margin: 0 !important;
-      min-width: 0;
+    .pab-form-wrap .formkit-form .formkit-field {
+      flex: 1 1 auto !important; width: auto !important; margin: 0 !important; min-width: 0;
+    }
+    .pab-form-wrap .formkit-form .formkit-submit {
+      flex: 0 0 auto !important; width: auto !important; margin: 0 !important;
     }
 
-    /* Email input — transparent on the wrapper, paper text */
-    .sps-form-wrap .formkit-form .formkit-input {
-      background: var(--ink-900) !important;
-      border: 1px solid var(--ink-700) !important;
+    .pab-form-wrap .formkit-form .formkit-input {
+      background: var(--stone-0) !important;
+      border: 2px solid var(--stone-0) !important;
       outline: none !important;
       box-shadow: none !important;
       font-family: var(--font-sans) !important;
-      font-size: 15px !important;
+      font-size: 16px !important;
       font-weight: 500 !important;
-      padding: 12px 16px !important;
-      color: var(--paper-100) !important;
+      padding: 15px 18px !important;
+      color: var(--obsidian-0) !important;
       width: 100% !important;
-      border-radius: 3px !important;
+      height: 100% !important;
+      border-radius: var(--radius-sm) !important;
       letter-spacing: 0 !important;
-      transition: border-color 180ms;
+      transition: box-shadow var(--dur-fast), border-color var(--dur-fast);
     }
-    .sps-form-wrap .formkit-form .formkit-input::placeholder {
-      color: var(--ink-400) !important;
-      opacity: 1 !important;
-    }
-    .sps-form-wrap .formkit-form .formkit-input:focus {
-      border-color: var(--butter-500) !important;
-      outline: none !important;
+    .pab-form-wrap .formkit-form .formkit-input::placeholder { color: var(--obsidian-4) !important; opacity: 1 !important; }
+    .pab-form-wrap .formkit-form .formkit-input:focus {
+      border-color: var(--laser-2) !important;
+      box-shadow: var(--glow-laser-soft) !important;
     }
 
-    /* Submit — primary brand button (butter, hard cast shadow) */
-    .sps-form-wrap .formkit-form .formkit-submit {
-      background: var(--butter-500) !important;
-      color: var(--ink-900) !important;
-      border: none !important;
-      border-radius: 3px !important;
-      font-family: var(--font-sans) !important;
+    .pab-form-wrap .formkit-form .formkit-submit {
+      background: var(--laser-2) !important;
+      color: var(--stone-0) !important;
+      border: 2px solid var(--laser-2) !important;
+      border-radius: var(--radius-sm) !important;
+      font-family: var(--font-mono) !important;
       font-weight: 700 !important;
       font-size: 14px !important;
-      letter-spacing: 0.1em !important;
+      letter-spacing: 0.08em !important;
       text-transform: uppercase !important;
       cursor: pointer;
-      box-shadow: 6px 6px 0 var(--ink-950) !important;
-      transition: transform 120ms cubic-bezier(.16,.84,.36,1),
-                  box-shadow 120ms cubic-bezier(.16,.84,.36,1),
-                  background-color 180ms;
+      transition: transform var(--dur-fast) var(--ease-out),
+                  background-color var(--dur-fast) var(--ease-out);
       overflow: hidden;
     }
-    .sps-form-wrap .formkit-form .formkit-submit > span {
-      padding: 14px 22px !important;
-      white-space: nowrap;
-      display: block;
-    }
-    .sps-form-wrap .formkit-form .formkit-submit:hover {
-      background: var(--butter-400) !important;
-      color: var(--ink-900) !important;
-    }
-    .sps-form-wrap .formkit-form .formkit-submit:hover > span {
-      background-color: transparent !important;
-    }
-    .sps-form-wrap .formkit-form .formkit-submit:active {
-      transform: translate(2px, 2px);
-      box-shadow: 4px 4px 0 var(--ink-950) !important;
-    }
+    .pab-form-wrap .formkit-form .formkit-submit > span { padding: 15px 26px !important; white-space: nowrap; display: block; }
+    .pab-form-wrap .formkit-form .formkit-submit:hover { background: var(--laser-1) !important; color: var(--stone-0) !important; transform: translateY(-1px); }
+    .pab-form-wrap .formkit-form .formkit-submit:hover > span { background: transparent !important; }
+    .pab-form-wrap .formkit-form .formkit-submit:active { transform: translateY(1px); }
 
-    /* Hide ConvertKit "Built with Kit" badge */
     .formkit-powered-by-convertkit-container,
     .formkit-powered-by-convertkit { display: none !important; }
 
-    /* Error alert — match palette */
-    .sps-form-wrap .formkit-form .formkit-alert {
+    /* hide the empty error alert so it doesn't render as a red bar */
+    .pab-form-wrap .formkit-form .formkit-alert:empty { display: none !important; }
+    .pab-form-wrap .formkit-form .formkit-alert {
       margin: 0 0 10px !important;
+      font-family: var(--font-sans);
       font-size: 13px;
-      background: rgba(197, 82, 62, 0.12) !important;
-      border-color: var(--rust-500) !important;
-      color: var(--paper-100) !important;
-      border-radius: 3px !important;
+      background: rgba(225,14,14,0.12) !important;
+      border: 2px solid var(--laser-2) !important;
+      color: var(--stone-0) !important;
+      border-radius: var(--radius-sm) !important;
     }
 
-    /* ─── RESPONSIVE ─── */
-    /* Tablet portrait + mobile — single centered column, product sits
-       inline between the two paragraphs. Tablet horizontal (≥961px)
-       keeps the desktop two-column layout. */
-    @media (max-width: 960px) {
-      .sps-nav-inner { padding: 10px 24px; }
-      .sps-hero-inner {
-        grid-template-columns: 1fr;
-        gap: clamp(12px, 2vh, 24px);
-        padding: clamp(14px, 2.5vh, 28px) 24px clamp(16px, 2.5vh, 28px);
-        text-align: center;
-        align-content: center;
-        justify-items: center;
-      }
-      .sps-product { display: none; }
-      .sps-product-mobile {
-        display: block;
-        margin: clamp(6px, 1vh, 14px) 0 clamp(8px, 1.2vh, 16px);
-      }
-      .sps-product-mobile img { width: clamp(140px, 22vh, 200px); }
-      .sps-hero-text {
-        text-align: center;
-        width: 100%;
-        max-width: clamp(360px, 70vw, 500px);
-        margin: 0 auto;
-      }
-      .sps-display,
-      .sps-lede,
-      .sps-sublede,
-      .sps-form-wrap,
-      .sps-cd {
-        max-width: 100%;
-        width: 100%;
-        margin-left: 0;
-        margin-right: 0;
-      }
-      .sps-display {
-        text-wrap: wrap;
-      }
-      .sps-form-label { text-align: center; }
+    /* ─── DESKTOP: lock to viewport, never scroll ─── */
+    @media (min-width: 901px) {
+      .pab-page { height: 100dvh; overflow: hidden; }
+      .pab-hero { overflow: hidden; }
     }
 
-    /* Mobile — tighter typography for phones, narrower column */
-    @media (max-width: 640px) {
-      .sps-nav-inner { padding: 8px 16px; gap: 8px; }
-      .sps-brand-word { font-size: 16px; }
-      .sps-brand-mark { width: 26px; height: 26px; }
-      .sps-nav-status {
-        font-size: 10px;
-        letter-spacing: 0.06em;
-        gap: 6px;
+    /* ─── STACK below tablet width ─── */
+    @media (max-width: 900px) {
+      .pab-topbar { grid-template-columns: 1fr; }
+      .pab-topbar-right { display: none; }
+      .pab-hero { grid-template-columns: 1fr; }
+      .pab-hero-left { order: 1; padding: clamp(28px, 5vh, 56px) clamp(20px, 6vw, 48px); }
+      .pab-hero-content { max-width: 640px; margin: 0 auto; }
+      .pab-hero-right { order: 2; height: 62vh; min-height: 420px; }
+      .pab-statue { right: 50%; transform: translateX(50%); height: min(82%, 480px); }
+      .pab-quote {
+        top: clamp(20px, 4vh, 40px);
+        left: 50%; right: auto; transform: translateX(-50%);
+        width: clamp(300px, 66vw, 460px);
       }
-      .sps-pulse { width: 6px; height: 6px; }
-
-      .sps-product-mobile {
-        margin: clamp(4px, 0.8vh, 10px) 0 clamp(6px, 1vh, 12px);
-      }
-      .sps-product-mobile img { width: clamp(100px, 16vh, 150px); }
-
-      .sps-hero-inner {
-        padding: clamp(10px, 1.6vh, 18px) 16px clamp(12px, 1.6vh, 20px);
-        gap: clamp(8px, 1.4vh, 14px);
-      }
-      .sps-hero-text { max-width: 360px; }
-      .sps-display {
-        font-size: clamp(20px, 5.6vw, 28px);
-        line-height: 1;
-        margin-bottom: 8px;
-        letter-spacing: -0.01em;
-      }
-      .sps-lede {
-        font-size: 13.5px;
-        line-height: 1.4;
-        margin-bottom: 0;
-      }
-      .sps-sublede {
-        font-size: 12.5px;
-        line-height: 1.45;
-        margin-bottom: 10px;
-      }
-
-      .sps-cd { margin-top: 10px; }
-      .sps-cd-label { font-size: 9px; letter-spacing: 0.14em; margin-bottom: 6px; }
-      .sps-cd-unit { padding: 6px 4px 5px; }
-      .sps-cd-num { font-size: 20px; }
-      .sps-cd-name { font-size: 8px; letter-spacing: 0.1em; margin-top: 4px; }
-      .sps-cd-sep { font-size: 16px; padding-bottom: 4px; }
-
-      .sps-form-label { margin-bottom: 6px; font-size: 10px; }
-      .sps-form-wrap .formkit-form { padding: 4px; }
-      .sps-form-wrap .formkit-form .formkit-input {
-        font-size: 15px !important;
-        padding: 11px 14px !important;
-      }
-      .sps-form-wrap .formkit-form .formkit-submit {
-        font-size: clamp(10px, 2.6vw, 12px) !important;
-        letter-spacing: 0.06em !important;
-        box-shadow: 4px 4px 0 var(--ink-950) !important;
-      }
-      .sps-form-wrap .formkit-form .formkit-submit > span {
-        padding: 12px 8px !important;
-      }
-      .sps-form-wrap .formkit-form .formkit-submit:active {
-        box-shadow: 2px 2px 0 var(--ink-950) !important;
-      }
+      /* tail sits left-of-centre, still pointing down toward the centred statue */
+      .pab-quote-tail { right: auto; left: 40px; width: clamp(72px, 14vw, 96px); }
+      /* restore comfortable type sizes when stacked (height no longer the constraint) */
+      .pab-display { font-size: clamp(48px, 11vw, 88px); margin-bottom: 22px; }
+      .pab-sub { font-size: clamp(16px, 2.4vw, 20px); margin-bottom: 28px; }
+      .pab-form-label, .pab-cd-label { font-size: 12px; margin-bottom: 14px; }
+      .pab-cd { margin-top: 36px; }
+      .pab-cd-num { font-size: clamp(28px, 6vw, 40px); }
+      .pab-cd-name { font-size: 9px; margin-top: 8px; }
     }
 
-    /* Tighten countdown separators on very narrow screens */
-    @media (max-width: 380px) {
-      .sps-cd-grid { gap: 2px; }
-      .sps-cd-sep { display: none; }
-    }
+    /* ─── Phones ─── */
+    @media (max-width: 560px) {
+      .pab-topbar-left { padding: 14px 18px; }
+      .pab-brand-word { font-size: 15px; letter-spacing: 0.08em; }
+      .pab-emblem { width: 34px; height: 34px; gap: 5px; }
 
-    /* Hide the live-status chip if the viewport is too narrow */
-    @media (max-width: 480px) {
-      .sps-nav-status span:last-child { display: none; }
-    }
+      .pab-hero-left { padding: 28px 18px 36px; }
+      .pab-display { font-size: clamp(40px, 14vw, 60px); margin-bottom: 18px; }
+      .pab-sub { font-size: 16px; margin-bottom: 24px; }
 
-    /* Very short desktop viewports — laptops at 1366×768 etc. */
-    @media (max-height: 760px) and (min-width: 961px) {
-      .sps-nav-inner { padding: 10px 32px; }
-      .sps-hero-inner {
-        padding: 14px 32px;
-        gap: 28px;
-      }
-      .sps-display { font-size: clamp(32px, 4.6vw, 60px); }
-      .sps-lede { font-size: 15px; margin-bottom: 10px; }
-      .sps-sublede { font-size: 13.5px; margin-bottom: 14px; }
-      .sps-cd { margin-top: 12px; }
-      .sps-product img { max-width: 320px; width: 320px; }
-    }
+      .pab-form-wrap .formkit-form .formkit-fields { flex-direction: column !important; }
+      .pab-form-wrap .formkit-form .formkit-submit > span { padding: 15px 20px !important; }
 
-    /* Short mobile viewports — iPhone SE etc. */
-    @media (max-height: 700px) and (max-width: 640px) {
-      .sps-display { font-size: clamp(18px, 5vw, 24px); }
-      .sps-lede { font-size: 12.5px; line-height: 1.35; }
-      .sps-sublede { font-size: 11.5px; line-height: 1.4; }
-      .sps-cd-num { font-size: 18px; }
-      .sps-product-mobile img { width: clamp(80px, 12vh, 110px); }
+      .pab-cd-num { font-size: clamp(24px, 9vw, 34px); }
+
+      .pab-hero-right { height: 50vh; min-height: 320px; }
+      .pab-statue { height: min(84%, 380px); }
+      .pab-quote { width: clamp(260px, 86vw, 380px); padding: 16px 18px 18px; }
+      .pab-quote-name { font-size: 16px; }
+      .pab-quote-body { font-size: 16px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="sps-root">
+  <div class="pab-page">
 
-    <!-- ═══════════════ NAV ═══════════════ -->
-    <header class="sps-nav">
-      <div class="sps-nav-inner">
-        <a href="#" class="sps-brand" aria-label="Self-Publishing Studio">
-          <img src="assets/bookshelf-mark.svg" alt="" class="sps-brand-mark" width="34" height="34" />
-          <span class="sps-brand-word">Self-Publishing Studio</span>
+    <!-- ═══════════════ TOP BAR ═══════════════ -->
+    <header class="pab-topbar">
+      <div class="pab-topbar-left">
+        <a href="#" class="pab-brand" aria-label="Personal Agent Bootcamp">
+          <span class="pab-emblem" aria-hidden="true"><span></span><span></span></span>
+          <span class="pab-brand-text">
+            <span class="pab-brand-word">Personal Agent Bootcamp</span>
+            <span class="pab-status">
+              <span>Enrollment Opens June 15th</span>
+            </span>
+          </span>
         </a>
-        <div class="sps-nav-status">
-          <span class="sps-pulse" aria-hidden="true"></span>
-          <span>Enrollment Opens May 25th</span>
-        </div>
       </div>
+      <div class="pab-topbar-right" aria-hidden="true"></div>
     </header>
 
     <!-- ═══════════════ HERO ═══════════════ -->
-    <main class="sps-hero">
-      <div class="sps-hero-texture" aria-hidden="true"></div>
+    <main class="pab-hero">
 
-      <div class="sps-hero-inner">
-
-        <section class="sps-hero-text">
-          <h1 class="sps-display">
-            Want to <span class="pop">write a non-fiction book</span> that pays you for the next 10 years?
+      <!-- ── Left: content ── -->
+      <section class="pab-hero-left">
+        <div class="pab-hero-content">
+          <h1 class="pab-display">
+            Every hero<br />needs a <span class="pop">Wingman</span>
           </h1>
 
-          <p class="sps-lede">
-            I&rsquo;ve sold <strong>tens of thousands of books</strong> worldwide and generated <strong>$500K+ in royalties</strong> writing non-fiction&mdash;now I want to help you do the same.
-          </p>
-
-          <aside class="sps-product-mobile" aria-hidden="true">
-            <img src="assets/product-render.png" alt="" />
-          </aside>
-
-          <p class="sps-sublede">
-            And on <strong>Monday, June 1st</strong>, we&rsquo;re launching <strong>Self-Publishing Studio</strong>: a 2-week live program to help you write, publish, and market a non-fiction book that builds your business.
+          <p class="pab-sub">
+            Which is why on <strong>Monday, June 22nd</strong>, we&rsquo;re launching the <strong>Personal Agent Bootcamp</strong> &mdash; a <strong>2-week live program</strong> to help you build, deploy, and package a <span class="accent">personal agent you can sell</span>.
           </p>
 
           <!-- ── Kit (ConvertKit) Form ── -->
-          <div class="sps-form-wrap">
-            <div class="sps-form-label">— Get on the waitlist —</div>
+          <div class="pab-form-wrap">
+            <div class="pab-form-label"><span>// Get on the waitlist</span><span class="rule" aria-hidden="true"></span></div>
             <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
-            <form action="https://app.kit.com/forms/9431878/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="9431878" data-uid="77c222d114" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;redirect&quot;,&quot;success_message&quot;:&quot;Success! Now check your email to confirm your subscription.&quot;,&quot;redirect_url&quot;:&quot;https://sps-thank-you.vercel.app/&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:true,&quot;url&quot;:&quot;https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}" min-width="400 500 600 700 800"><div data-style="clean"><ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul><div data-element="fields" data-stacked="false" class="seva-fields formkit-fields"><div class="formkit-field"><input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Email Address" required="" type="email"></div><button data-element="submit" class="formkit-submit formkit-submit"><div class="formkit-spinner"><div></div><div></div><div></div></div><span class="">Join the waitlist &amp; unlock exclusive bonuses</span></button></div><div class="formkit-powered-by-convertkit-container"><a href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic" data-element="powered-by" class="formkit-powered-by-convertkit" data-variant="dark" target="_blank" rel="nofollow noopener">Built with Kit</a></div></div></form>
-
+            <form action="https://app.kit.com/forms/9528494/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="9528494" data-uid="80b0f21594" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;redirect&quot;,&quot;success_message&quot;:&quot;Success! Now check your email to confirm your subscription.&quot;,&quot;redirect_url&quot;:&quot;https://pab-thank-you.vercel.app/&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:true,&quot;url&quot;:&quot;https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}" min-width="400 500 600 700 800"><div data-style="clean"><ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul><div data-element="fields" data-stacked="false" class="seva-fields formkit-fields"><div class="formkit-field"><input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Email address" required="" type="email"></div><button data-element="submit" class="formkit-submit formkit-submit"><div class="formkit-spinner"><div></div><div></div><div></div></div><span class="">Join the waitlist</span></button></div><div class="formkit-powered-by-convertkit-container"><a href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic" data-element="powered-by" class="formkit-powered-by-convertkit" data-variant="dark" target="_blank" rel="nofollow noopener">Built with Kit</a></div></div></form>
           </div>
 
           <!-- ── Countdown to enrollment open ── -->
-          <div class="sps-cd" role="timer" aria-live="off">
-            <div class="sps-cd-label">— Enrollment Opens In —</div>
-            <div class="sps-cd-grid">
-              <div class="sps-cd-unit">
-                <div class="sps-cd-num" id="cd-days">00</div>
-                <div class="sps-cd-name">Days</div>
+          <div class="pab-cd" role="timer" aria-live="off">
+            <div class="pab-cd-label">// Enrollment opens in</div>
+            <div class="pab-cd-grid">
+              <div class="pab-cd-unit">
+                <div class="pab-cd-num" id="cd-days">00</div>
+                <div class="pab-cd-name">Days</div>
               </div>
-              <span class="sps-cd-sep" aria-hidden="true">:</span>
-              <div class="sps-cd-unit">
-                <div class="sps-cd-num" id="cd-hours">00</div>
-                <div class="sps-cd-name">Hours</div>
+              <div class="pab-cd-unit">
+                <div class="pab-cd-num" id="cd-hours">00</div>
+                <div class="pab-cd-name">Hours</div>
               </div>
-              <span class="sps-cd-sep" aria-hidden="true">:</span>
-              <div class="sps-cd-unit">
-                <div class="sps-cd-num" id="cd-mins">00</div>
-                <div class="sps-cd-name">Min</div>
+              <div class="pab-cd-unit">
+                <div class="pab-cd-num" id="cd-mins">00</div>
+                <div class="pab-cd-name">Min</div>
               </div>
-              <span class="sps-cd-sep" aria-hidden="true">:</span>
-              <div class="sps-cd-unit">
-                <div class="sps-cd-num" id="cd-secs">00</div>
-                <div class="sps-cd-name">Sec</div>
+              <div class="pab-cd-unit">
+                <div class="pab-cd-num" id="cd-secs">00</div>
+                <div class="pab-cd-name">Sec</div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- ── Right column: product render ── -->
-        <aside class="sps-product" aria-hidden="true">
-          <img src="assets/product-render.png" alt="Self-Publishing Studio course box" width="380" />
-        </aside>
+      <!-- ── Right: sky field, statue & Wingman quote ── -->
+      <section class="pab-hero-right">
+        <div class="pab-quote" role="img" aria-label="ICE, your Slack Wingman: Hi Mitch — I'm ICE, your Slack Wingman. What are we working on today?">
+          <div class="pab-quote-head">
+            <span class="pab-quote-emblem" aria-hidden="true"><span></span><span></span></span>
+            <span class="pab-quote-name">ICE</span>
+            <span class="pab-quote-app">Agent</span>
+            <span class="pab-quote-time">9:41 AM</span>
+          </div>
+          <div class="pab-quote-body">
+            <p>Hi Mitch &mdash; I&rsquo;m <strong>ICE</strong>, your Slack Wingman.</p>
+            <p>What are we working on today?</p>
+          </div>
+          <svg class="pab-quote-tail" viewBox="0 0 108 104" aria-hidden="true" focusable="false">
+            <path d="M0,4 L64,4 L96,100 Z" fill="#FFFFFF" />
+            <path d="M64,4 L96,100 L0,4" fill="none" stroke="#15181C" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round" />
+          </svg>
+        </div>
+        <img class="pab-statue" src="assets/statue-cool.png" alt="Marble bust in aviators with glowing red laser eyes" />
+      </section>
 
-      </div>
     </main>
-
   </div>
 
   <!-- ═══════════════════════════ COUNTDOWN JS ═══════════════════════════ -->
   <script>
-    // End of day May 25 → midnight May 26 ET (EDT = UTC-4)
-    const TARGET = new Date('2026-05-26T04:00:00Z');
+    // Enrollment opens June 15th, 12:00 am ET (EDT = UTC-4)
+    const TARGET = new Date('2026-06-15T04:00:00Z');
 
     function tick() {
       const diff = Math.max(0, TARGET - Date.now());
