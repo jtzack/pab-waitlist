@@ -179,10 +179,11 @@
     /* Subhead */
     .pab-sub {
       font-family: var(--font-sans);
-      font-size: clamp(15px, 2.15vh, 21px);
+      font-size: clamp(14px, 2vh, 19px);
       line-height: 1.55;
       color: var(--text-on-dark-muted);
-      max-width: 600px;
+      /* a touch narrower than the headline's longest line (~38vw) */
+      max-width: min(540px, 36vw);
       margin: 0 0 clamp(18px, 3vh, 34px);
       text-wrap: pretty;
     }
