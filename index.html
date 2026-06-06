@@ -6,7 +6,7 @@
   <title>Personal Agent Bootcamp — Waitlist</title>
   <meta name="description" content="Every hero needs a Wingman. A 2-week live program to help you build, deploy, and package a personal agent you can sell. Join the waitlist." />
   <meta property="og:title" content="Personal Agent Bootcamp — Waitlist" />
-  <meta property="og:description" content="A 2-week live program to help you build, deploy, and package a personal agent you can sell. Enrollment opens June 22nd." />
+  <meta property="og:description" content="A 2-week live program to help you build, deploy, and package a personal agent you can sell. Enrollment opens June 15th." />
   <meta property="og:type" content="website" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 
@@ -87,12 +87,12 @@
     .pab-topbar {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      border-bottom: 2px solid var(--obsidian-0);
     }
     .pab-topbar-left {
       background: var(--obsidian-0);
       display: flex; align-items: center;
       padding: 14px clamp(24px, 4vw, 60px);
+      border-bottom: 2px solid var(--obsidian-0);
     }
     .pab-topbar-right {
       background: var(--sky);
@@ -100,6 +100,7 @@
       padding: 14px clamp(24px, 4vw, 60px);
     }
     .pab-brand { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; }
+    .pab-brand-text { display: flex; flex-direction: column; gap: 7px; }
     .pab-emblem {
       width: 38px; height: 38px;
       border: 2.5px solid var(--stone-1);
@@ -122,17 +123,13 @@
       line-height: 1;
     }
     .pab-status {
-      display: inline-flex; align-items: center; gap: 10px;
+      display: inline-flex; align-items: center; gap: 8px;
       font-family: var(--font-mono);
       font-weight: 700;
-      font-size: clamp(10px, 0.9vw, 12px);
+      font-size: clamp(10px, 0.85vw, 12px);
       letter-spacing: 0.16em;
-      color: var(--text-on-dark);
+      color: var(--text-on-dark-muted);
       text-transform: uppercase;
-      background: var(--obsidian-0);
-      border: 2px solid var(--obsidian-0);
-      border-radius: var(--radius-sm);
-      padding: 9px 14px;
     }
     .pab-pulse {
       width: 8px; height: 8px; border-radius: 50%;
@@ -254,9 +251,9 @@
        #92D8F8 bg blends into the panel */
     .pab-statue {
       position: absolute;
-      bottom: 0;
-      right: clamp(-150px, -5vw, -40px);
-      height: min(80%, 640px);
+      bottom: clamp(-150px, -10vh, -50px);
+      right: clamp(-200px, -7.5vw, -80px);
+      height: min(90%, 720px);
       width: auto;
       display: block;
       z-index: 1;
@@ -451,15 +448,16 @@
       <div class="pab-topbar-left">
         <a href="#" class="pab-brand" aria-label="Personal Agent Bootcamp">
           <span class="pab-emblem" aria-hidden="true"><span></span><span></span></span>
-          <span class="pab-brand-word">Personal Agent Bootcamp</span>
+          <span class="pab-brand-text">
+            <span class="pab-brand-word">Personal Agent Bootcamp</span>
+            <span class="pab-status">
+              <span class="pab-pulse" aria-hidden="true"></span>
+              <span>Enrollment Opens June 15th</span>
+            </span>
+          </span>
         </a>
       </div>
-      <div class="pab-topbar-right">
-        <div class="pab-status">
-          <span class="pab-pulse" aria-hidden="true"></span>
-          <span>Enrollment Opens June 22nd</span>
-        </div>
-      </div>
+      <div class="pab-topbar-right" aria-hidden="true"></div>
     </header>
 
     <!-- ═══════════════ HERO ═══════════════ -->
@@ -473,7 +471,7 @@
           </h1>
 
           <p class="pab-sub">
-            Which is why on <strong>Monday, June 22nd</strong>, we&rsquo;re launching the <span class="accent">Personal Agent Bootcamp</span> &mdash; a <strong>2-week live program</strong> to help you build, deploy, and package a personal agent you can sell.
+            Which is why on <strong>Monday, June 15th</strong>, we&rsquo;re launching the <span class="accent">Personal Agent Bootcamp</span> &mdash; a <strong>2-week live program</strong> to help you build, deploy, and package a personal agent you can sell.
           </p>
 
           <!-- ── Kit (ConvertKit) Form ── -->
@@ -534,8 +532,8 @@
 
   <!-- ═══════════════════════════ COUNTDOWN JS ═══════════════════════════ -->
   <script>
-    // Enrollment opens June 22nd → midnight ET (EDT = UTC-4)
-    const TARGET = new Date('2026-06-22T04:00:00Z');
+    // Enrollment opens June 15th, 12:00 am ET (EDT = UTC-4)
+    const TARGET = new Date('2026-06-15T04:00:00Z');
 
     function tick() {
       const diff = Math.max(0, TARGET - Date.now());
