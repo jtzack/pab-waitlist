@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Personal Agent Bootcamp — Waitlist</title>
+  <title>Build And Sell Personal Agents</title>
   <meta name="description" content="Every hero needs a Wingman. A 2-week live program to help you build, deploy, and package a personal agent you can sell. Join the waitlist." />
-  <meta property="og:title" content="Personal Agent Bootcamp — Waitlist" />
+  <meta property="og:title" content="Build And Sell Personal Agents" />
   <meta property="og:description" content="A 2-week live program to help you build, deploy, and package a personal agent you can sell. Enrollment opens June 15th." />
   <meta property="og:type" content="website" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
@@ -142,6 +142,9 @@
       box-shadow: 0 0 8px rgba(255,59,48,0.95);
       animation: pulse-dot 1.6s ease-in-out infinite;
     }
+    /* Launch-date pill — desktop keeps the top-right panel as bare sky, so it's
+       hidden here and only revealed in the stacked (mobile) layout below */
+    .pab-date-pill { display: none; }
 
     /* ─── HERO — split: dark content left, sky statue right ─── */
     .pab-hero {
@@ -379,6 +382,15 @@
     .formkit-powered-by-convertkit-container,
     .formkit-powered-by-convertkit { display: none !important; }
 
+    /* Kit can auto-inject floating variants (slide-in / sticky / modal) and the
+       Creator Network recommendations launcher from the embed; we only want the
+       inline form, so suppress the rest */
+    .formkit-slide-in, .formkit-sticky-bar, .formkit-modal,
+    .formkit-modal-background, .formkit-recommendations,
+    [data-element="recommendations"], .seva-slide-in, .seva-sticky-bar {
+      display: none !important;
+    }
+
     /* hide the empty error alert so it doesn't render as a red bar */
     .pab-form-wrap .formkit-form .formkit-alert:empty { display: none !important; }
     .pab-form-wrap .formkit-form .formkit-alert {
@@ -397,51 +409,137 @@
       .pab-hero { overflow: hidden; }
     }
 
-    /* ─── STACK below tablet width ─── */
+    /* ─── STACK below tablet width — mockup order: headline → statue → copy ─── */
     @media (max-width: 900px) {
-      .pab-topbar { grid-template-columns: 1fr; }
-      .pab-topbar-right { display: none; }
-      .pab-hero { grid-template-columns: 1fr; }
-      .pab-hero-left { order: 1; padding: clamp(28px, 5vh, 56px) clamp(20px, 6vw, 48px); }
-      .pab-hero-content { max-width: 640px; margin: 0 auto; }
-      .pab-hero-right { order: 2; height: 62vh; min-height: 420px; }
-      .pab-statue { right: 50%; transform: translateX(50%); height: min(82%, 480px); }
+      /* top bar: all-dark, brand left + launch-date pill right */
+      .pab-topbar { grid-template-columns: 1fr auto; }
+      .pab-topbar-right {
+        display: flex;
+        background: var(--obsidian-0);
+        padding: 14px clamp(18px, 5vw, 48px);
+      }
+      .pab-status { display: none; }       /* date now lives in the pill + countdown */
+      /* fewer blinking lights on mobile: emblem eyes glow steadily, leaving
+         only the pill dot pulsing */
+      .pab-emblem span { animation: none; }
+      .pab-date-pill {
+        display: inline-flex; align-items: center; gap: 8px;
+        border: 1.5px solid var(--obsidian-3);
+        border-radius: var(--radius-sm);
+        padding: 7px 12px;
+        font-family: var(--font-mono); font-weight: 700;
+        font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+        color: var(--text-on-dark-muted);
+        white-space: nowrap;
+      }
+
+      /* hero collapses to one reorderable column; display:contents lets the
+         left-column children sit as siblings of the sky panel so we can
+         interleave them (headline above the statue, copy/form below it) */
+      .pab-hero { display: flex; flex-direction: column; }
+      .pab-hero-left, .pab-hero-content { display: contents; }
+
+      .pab-display    { order: 1; }
+      .pab-hero-right { order: 2; }
+      .pab-sub        { order: 3; }
+      .pab-form-wrap  { order: 4; }
+      .pab-cd         { order: 5; }
+
+      /* the dark text/form blocks — re-add the gutter the left panel used to give */
+      .pab-display, .pab-sub, .pab-form-wrap, .pab-cd {
+        width: 100%;
+        max-width: 640px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: clamp(20px, 6vw, 48px);
+        padding-right: clamp(20px, 6vw, 48px);
+      }
+
+      .pab-display {
+        padding-top: clamp(24px, 4vh, 40px);
+        font-size: clamp(38px, 7.5vw, 54px);
+        margin-bottom: clamp(16px, 2.5vh, 24px);
+      }
+      .pab-sub {
+        margin-top: clamp(24px, 4vh, 34px);
+        margin-bottom: clamp(20px, 3vh, 28px);
+        font-size: clamp(16px, 2.4vw, 20px);
+      }
+      .pab-cd {
+        margin-top: clamp(18px, 3vh, 36px);
+        padding-bottom: clamp(28px, 5vh, 44px);
+      }
+
+      /* sky statue panel — full-bleed band between headline and copy.
+         Tall enough that the bubble sits over the hair while the full head
+         (and aviators) read clearly below it */
+      .pab-hero-right { height: clamp(380px, 52vh, 480px); min-height: 0; }
+      .pab-statue {
+        right: 50%; transform: translateX(50%);
+        bottom: -20px; height: min(78%, 360px);
+      }
       .pab-quote {
         top: clamp(20px, 4vh, 40px);
         left: 50%; right: auto; transform: translateX(-50%);
-        width: clamp(300px, 66vw, 460px);
+        width: clamp(280px, 60vw, 420px);
       }
       /* tail sits left-of-centre, still pointing down toward the centred statue */
-      .pab-quote-tail { right: auto; left: 40px; width: clamp(72px, 14vw, 96px); }
-      /* restore comfortable type sizes when stacked (height no longer the constraint) */
-      .pab-display { font-size: clamp(48px, 11vw, 88px); margin-bottom: 22px; }
-      .pab-sub { font-size: clamp(16px, 2.4vw, 20px); margin-bottom: 28px; }
+      .pab-quote-tail { right: auto; left: 40px; width: clamp(72px, 12vw, 92px); }
+
       .pab-form-label, .pab-cd-label { font-size: 12px; margin-bottom: 14px; }
-      .pab-cd { margin-top: 36px; }
       .pab-cd-num { font-size: clamp(28px, 6vw, 40px); }
       .pab-cd-name { font-size: 9px; margin-top: 8px; }
     }
 
-    /* ─── Phones ─── */
+    /* ─── Phones — tighten so headline + statue + copy + form + countdown
+           all clear the fold without scrolling ─── */
     @media (max-width: 560px) {
-      .pab-topbar-left { padding: 14px 18px; }
-      .pab-brand-word { font-size: 15px; letter-spacing: 0.08em; }
-      .pab-emblem { width: 34px; height: 34px; gap: 5px; }
+      .pab-topbar-left { padding: 12px 18px; }
+      .pab-topbar-right { padding: 12px 18px; }
+      .pab-brand-word { font-size: 14px; letter-spacing: 0.07em; }
+      .pab-emblem { width: 32px; height: 32px; gap: 5px; }
+      .pab-date-pill { padding: 6px 10px; font-size: 10px; letter-spacing: 0.12em; }
 
-      .pab-hero-left { padding: 28px 18px 36px; }
-      .pab-display { font-size: clamp(40px, 14vw, 60px); margin-bottom: 18px; }
-      .pab-sub { font-size: 16px; margin-bottom: 24px; }
+      /* font sized so "needs a Wingman" fits one line → headline is 2 lines */
+      .pab-display {
+        padding-top: clamp(14px, 2vh, 22px);
+        font-size: clamp(25px, 7.4vw, 32px);
+        margin-bottom: clamp(10px, 1.4vh, 14px);
+      }
+      /* small enough that the subhead settles to ~3 lines */
+      .pab-sub {
+        font-size: 11.5px;
+        line-height: 1.5;
+        margin-top: clamp(14px, 2.2vh, 20px);
+        margin-bottom: clamp(12px, 1.8vh, 16px);
+      }
 
       .pab-form-wrap .formkit-form .formkit-fields { flex-direction: column !important; }
-      .pab-form-wrap .formkit-form .formkit-submit > span { padding: 15px 20px !important; }
+      .pab-form-wrap .formkit-form .formkit-input { padding: 12px 16px !important; font-size: 15px !important; }
+      .pab-form-wrap .formkit-form .formkit-submit > span { padding: 12px 20px !important; }
 
-      .pab-cd-num { font-size: clamp(24px, 9vw, 34px); }
+      .pab-form-label, .pab-cd-label { font-size: 11px; margin-bottom: 9px; }
+      .pab-cd { margin-top: clamp(12px, 1.8vh, 18px); padding-bottom: clamp(16px, 2.4vh, 24px); }
+      .pab-cd-unit { padding: 9px 6px 7px; }
+      .pab-cd-num { font-size: clamp(22px, 6.5vw, 30px); }
+      .pab-cd-name { font-size: 8px; margin-top: 5px; }
 
-      .pab-hero-right { height: 50vh; min-height: 320px; }
-      .pab-statue { height: min(84%, 380px); }
-      .pab-quote { width: clamp(260px, 86vw, 380px); padding: 16px 18px 18px; }
-      .pab-quote-name { font-size: 16px; }
-      .pab-quote-body { font-size: 16px; }
+      /* sky band — compact so the CTA + countdown stay above the fold */
+      .pab-hero-right { height: clamp(230px, 32vh, 290px); }
+      .pab-statue { bottom: -14px; height: min(74%, 250px); }
+      /* compact bubble so it caps the hair instead of burying the face */
+      .pab-quote {
+        top: clamp(12px, 2vh, 18px);
+        width: clamp(230px, 78vw, 320px);
+        padding: 11px 14px 13px;
+      }
+      .pab-quote-head { margin-bottom: 8px; }
+      .pab-quote-emblem { width: 24px; height: 24px; }
+      .pab-quote-name { font-size: 14px; }
+      .pab-quote-app  { font-size: 12px; }
+      .pab-quote-time { font-size: 10px; }
+      .pab-quote-body { font-size: 13px; line-height: 1.45; }
+      .pab-quote-body p + p { margin-top: 7px; }
     }
   </style>
 </head>
@@ -452,17 +550,22 @@
     <!-- ═══════════════ TOP BAR ═══════════════ -->
     <header class="pab-topbar">
       <div class="pab-topbar-left">
-        <a href="#" class="pab-brand" aria-label="Personal Agent Bootcamp">
+        <a href="#" class="pab-brand" aria-label="Build And Sell Personal Agents">
           <span class="pab-emblem" aria-hidden="true"><span></span><span></span></span>
           <span class="pab-brand-text">
-            <span class="pab-brand-word">Personal Agent Bootcamp</span>
+            <span class="pab-brand-word">Build And Sell Personal Agents</span>
             <span class="pab-status">
               <span>Enrollment Opens June 15th</span>
             </span>
           </span>
         </a>
       </div>
-      <div class="pab-topbar-right" aria-hidden="true"></div>
+      <div class="pab-topbar-right">
+        <span class="pab-date-pill">
+          <span class="pab-pulse" aria-hidden="true"></span>
+          <span>Jun 22</span>
+        </span>
+      </div>
     </header>
 
     <!-- ═══════════════ HERO ═══════════════ -->
@@ -481,7 +584,7 @@
 
           <!-- ── Kit (ConvertKit) Form ── -->
           <div class="pab-form-wrap">
-            <div class="pab-form-label"><span>// Get on the waitlist</span><span class="rule" aria-hidden="true"></span></div>
+            <div class="pab-form-label"><span class="rule" aria-hidden="true"></span></div>
             <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
             <form action="https://app.kit.com/forms/9528494/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="9528494" data-uid="80b0f21594" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;redirect&quot;,&quot;success_message&quot;:&quot;Success! Now check your email to confirm your subscription.&quot;,&quot;redirect_url&quot;:&quot;https://pab-thank-you.vercel.app/&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:true,&quot;url&quot;:&quot;https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}" min-width="400 500 600 700 800"><div data-style="clean"><ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul><div data-element="fields" data-stacked="false" class="seva-fields formkit-fields"><div class="formkit-field"><input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Email address" required="" type="email"></div><button data-element="submit" class="formkit-submit formkit-submit"><div class="formkit-spinner"><div></div><div></div><div></div></div><span class="">Join the waitlist</span></button></div><div class="formkit-powered-by-convertkit-container"><a href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic" data-element="powered-by" class="formkit-powered-by-convertkit" data-variant="dark" target="_blank" rel="nofollow noopener">Built with Kit</a></div></div></form>
           </div>
