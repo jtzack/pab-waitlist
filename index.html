@@ -8,7 +8,7 @@
   <meta property="og:title" content="Personal Agent Bootcamp — Waitlist" />
   <meta property="og:description" content="A 2-week live program to help you build, deploy, and package a personal agent you can sell. Enrollment opens June 22nd." />
   <meta property="og:type" content="website" />
-  <link rel="icon" href="assets/bookshelf-mark.svg" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -152,12 +152,12 @@
     .pab-hero-left {
       background: var(--obsidian-0);
       display: flex; align-items: center;
-      padding: clamp(20px, 4vh, 48px) clamp(24px, 4vw, 60px);
+      padding: clamp(20px, 4vh, 48px) clamp(24px, 3.5vw, 56px);
       min-height: 0;
     }
     .pab-hero-content {
       width: 100%;
-      max-width: 560px;
+      max-width: 720px;
       margin-left: auto;
     }
 
@@ -165,8 +165,8 @@
     .pab-display {
       font-family: var(--font-display);
       font-weight: 900;
-      font-size: clamp(38px, 7.2vh, 86px);
-      line-height: 0.92;
+      font-size: clamp(34px, 4.4vw, 74px);
+      line-height: 0.94;
       letter-spacing: 0.005em;
       text-transform: uppercase;
       color: var(--stone-0);
@@ -250,23 +250,25 @@
       overflow: hidden;
       min-height: 0;
     }
-    /* Square statue, anchored bottom-centre; its baked #92D8F8 bg blends into the panel */
+    /* Square statue, anchored bottom-right & bleeding off the edge; its baked
+       #92D8F8 bg blends into the panel */
     .pab-statue {
       position: absolute;
-      bottom: 0; left: 50%;
-      transform: translateX(-50%);
-      height: min(76%, 600px);
+      bottom: 0;
+      right: clamp(-150px, -5vw, -40px);
+      height: min(80%, 640px);
       width: auto;
       display: block;
       z-index: 1;
     }
 
-    /* Wingman / Slack chat bubble — large chiseled white card near the head */
+    /* Wingman / Slack chat bubble — large chiseled white card to the LEFT of the
+       statue, tail pointing right toward him */
     .pab-quote {
       position: absolute;
-      top: clamp(40px, 26%, 200px);
-      right: clamp(16px, 3vw, 56px);
-      width: clamp(340px, 33vw, 540px);
+      top: clamp(56px, 30%, 220px);
+      left: clamp(20px, 5%, 72px);
+      width: clamp(300px, 28vw, 430px);
       background: var(--stone-0);
       border: 2px solid var(--obsidian-0);
       border-radius: var(--radius-lg);
@@ -277,11 +279,11 @@
     .pab-quote::after {
       content: "";
       position: absolute;
-      bottom: -12px; left: 38px;
+      right: -12px; bottom: 26px;
       width: 20px; height: 20px;
       background: var(--stone-0);
+      border-top: 2px solid var(--obsidian-0);
       border-right: 2px solid var(--obsidian-0);
-      border-bottom: 2px solid var(--obsidian-0);
       transform: rotate(45deg);
     }
     .pab-quote-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
@@ -398,11 +400,16 @@
       .pab-hero-left { order: 1; padding: clamp(28px, 5vh, 56px) clamp(20px, 6vw, 48px); }
       .pab-hero-content { max-width: 640px; margin: 0 auto; }
       .pab-hero-right { order: 2; height: 62vh; min-height: 420px; }
-      .pab-statue { height: min(82%, 480px); }
+      .pab-statue { right: 50%; transform: translateX(50%); height: min(82%, 480px); }
       .pab-quote {
-        top: clamp(24px, 22%, 120px);
-        right: clamp(16px, 5vw, 40px);
+        top: clamp(20px, 4vh, 40px);
+        left: 50%; right: auto; transform: translateX(-50%);
         width: clamp(300px, 66vw, 460px);
+      }
+      /* downward tail when the bubble sits above the centred statue */
+      .pab-quote::after {
+        right: auto; bottom: -12px; left: 40px;
+        border-top: none; border-bottom: 2px solid var(--obsidian-0);
       }
       /* restore comfortable type sizes when stacked (height no longer the constraint) */
       .pab-display { font-size: clamp(48px, 11vw, 88px); margin-bottom: 22px; }
@@ -463,11 +470,11 @@
       <section class="pab-hero-left">
         <div class="pab-hero-content">
           <h1 class="pab-display">
-            Every<br />hero<br />needs a<br /><span class="pop">Wingman</span>
+            Every hero<br />needs a <span class="pop">Wingman</span>
           </h1>
 
           <p class="pab-sub">
-            Which is why on <strong>Monday, June 22nd</strong>, we&rsquo;re launching the Personal Agent Bootcamp &mdash; a <span class="accent">2-week live program</span> to help you build, deploy, and package a personal agent you can sell.
+            Which is why on <strong>Monday, June 22nd</strong>, we&rsquo;re launching the <span class="accent">Personal Agent Bootcamp</span> &mdash; a <strong>2-week live program</strong> to help you build, deploy, and package a personal agent you can sell.
           </p>
 
           <!-- ── Kit (ConvertKit) Form ── -->
