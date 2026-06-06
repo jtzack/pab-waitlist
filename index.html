@@ -188,6 +188,12 @@
     }
     .pab-sub strong { color: var(--stone-0); font-weight: 700; }
     .pab-sub .accent { color: var(--laser-1); font-weight: 700; }
+    .pab-sub .pab-u {
+      text-decoration: underline;
+      text-decoration-color: var(--laser-2);
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 4px;
+    }
 
     /* Form */
     .pab-form-wrap { max-width: 560px; }
@@ -268,8 +274,8 @@
        statue, tail pointing right toward him */
     .pab-quote {
       position: absolute;
-      top: clamp(48px, 15%, 150px);
-      left: clamp(20px, 4vw, 80px);
+      top: clamp(72px, 19%, 185px);
+      left: clamp(40px, 6vw, 130px);
       width: clamp(320px, 22vw, 460px);
       background: var(--stone-0);
       border: 2px solid var(--obsidian-0);
@@ -380,6 +386,8 @@
     .formkit-powered-by-convertkit-container,
     .formkit-powered-by-convertkit { display: none !important; }
 
+    /* hide the empty error alert so it doesn't render as a red bar */
+    .pab-form-wrap .formkit-form .formkit-alert:empty { display: none !important; }
     .pab-form-wrap .formkit-form .formkit-alert {
       margin: 0 0 10px !important;
       font-family: var(--font-sans);
@@ -475,7 +483,7 @@
           </h1>
 
           <p class="pab-sub">
-            Which is why on <strong>Monday, June 15th</strong>, we&rsquo;re launching the <span class="accent">Personal Agent Bootcamp</span> &mdash; a <strong>2-week live program</strong> to help you build, deploy, and package a personal agent you can sell.
+            Which is why on <strong>Monday, June 15th</strong>, we&rsquo;re launching the <span class="accent">Personal Agent Bootcamp</span> &mdash; a <strong>2-week live program</strong> to help you build, deploy, and package a personal agent <span class="pab-u">you can sell</span>.
           </p>
 
           <!-- ── Kit (ConvertKit) Form ── -->
