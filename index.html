@@ -142,6 +142,9 @@
       box-shadow: 0 0 8px rgba(255,59,48,0.95);
       animation: pulse-dot 1.6s ease-in-out infinite;
     }
+    /* Launch-date pill — desktop keeps the top-right panel as bare sky, so it's
+       hidden here and only revealed in the stacked (mobile) layout below */
+    .pab-date-pill { display: none; }
 
     /* ─── HERO — split: dark content left, sky statue right ─── */
     .pab-hero {
@@ -397,15 +400,67 @@
       .pab-hero { overflow: hidden; }
     }
 
-    /* ─── STACK below tablet width ─── */
+    /* ─── STACK below tablet width — mockup order: headline → statue → copy ─── */
     @media (max-width: 900px) {
-      .pab-topbar { grid-template-columns: 1fr; }
-      .pab-topbar-right { display: none; }
-      .pab-hero { grid-template-columns: 1fr; }
-      .pab-hero-left { order: 1; padding: clamp(28px, 5vh, 56px) clamp(20px, 6vw, 48px); }
-      .pab-hero-content { max-width: 640px; margin: 0 auto; }
-      .pab-hero-right { order: 2; height: 62vh; min-height: 420px; }
-      .pab-statue { right: 50%; transform: translateX(50%); height: min(82%, 480px); }
+      /* top bar: all-dark, brand left + launch-date pill right */
+      .pab-topbar { grid-template-columns: 1fr auto; }
+      .pab-topbar-right {
+        display: flex;
+        background: var(--obsidian-0);
+        padding: 14px clamp(18px, 5vw, 48px);
+      }
+      .pab-status { display: none; }       /* date now lives in the pill + countdown */
+      .pab-date-pill {
+        display: inline-flex; align-items: center; gap: 8px;
+        border: 1.5px solid var(--obsidian-3);
+        border-radius: var(--radius-sm);
+        padding: 7px 12px;
+        font-family: var(--font-mono); font-weight: 700;
+        font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+        color: var(--text-on-dark-muted);
+        white-space: nowrap;
+      }
+
+      /* hero collapses to one reorderable column; display:contents lets the
+         left-column children sit as siblings of the sky panel so we can
+         interleave them (headline above the statue, copy/form below it) */
+      .pab-hero { display: flex; flex-direction: column; }
+      .pab-hero-left, .pab-hero-content { display: contents; }
+
+      .pab-display    { order: 1; }
+      .pab-hero-right { order: 2; }
+      .pab-sub        { order: 3; }
+      .pab-form-wrap  { order: 4; }
+      .pab-cd         { order: 5; }
+
+      /* the dark text/form blocks — re-add the gutter the left panel used to give */
+      .pab-display, .pab-sub, .pab-form-wrap, .pab-cd {
+        width: 100%;
+        max-width: 640px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: clamp(20px, 6vw, 48px);
+        padding-right: clamp(20px, 6vw, 48px);
+      }
+
+      .pab-display {
+        padding-top: clamp(28px, 5vh, 44px);
+        font-size: clamp(46px, 11vw, 82px);
+        margin-bottom: clamp(18px, 3vh, 26px);
+      }
+      .pab-sub {
+        margin-top: clamp(24px, 4vh, 34px);
+        margin-bottom: clamp(20px, 3vh, 28px);
+        font-size: clamp(16px, 2.4vw, 20px);
+      }
+      .pab-cd {
+        margin-top: clamp(18px, 3vh, 36px);
+        padding-bottom: clamp(28px, 5vh, 44px);
+      }
+
+      /* sky statue panel — full-bleed band between headline and copy */
+      .pab-hero-right { height: clamp(320px, 48vh, 440px); min-height: 0; }
+      .pab-statue { right: 50%; transform: translateX(50%); height: min(84%, 440px); }
       .pab-quote {
         top: clamp(20px, 4vh, 40px);
         left: 50%; right: auto; transform: translateX(-50%);
@@ -413,33 +468,41 @@
       }
       /* tail sits left-of-centre, still pointing down toward the centred statue */
       .pab-quote-tail { right: auto; left: 40px; width: clamp(72px, 14vw, 96px); }
-      /* restore comfortable type sizes when stacked (height no longer the constraint) */
-      .pab-display { font-size: clamp(48px, 11vw, 88px); margin-bottom: 22px; }
-      .pab-sub { font-size: clamp(16px, 2.4vw, 20px); margin-bottom: 28px; }
+
       .pab-form-label, .pab-cd-label { font-size: 12px; margin-bottom: 14px; }
-      .pab-cd { margin-top: 36px; }
       .pab-cd-num { font-size: clamp(28px, 6vw, 40px); }
       .pab-cd-name { font-size: 9px; margin-top: 8px; }
     }
 
-    /* ─── Phones ─── */
+    /* ─── Phones — tighten so headline + statue + copy + form fit the screen ─── */
     @media (max-width: 560px) {
       .pab-topbar-left { padding: 14px 18px; }
+      .pab-topbar-right { padding: 14px 18px; }
       .pab-brand-word { font-size: 15px; letter-spacing: 0.08em; }
       .pab-emblem { width: 34px; height: 34px; gap: 5px; }
+      .pab-date-pill { padding: 6px 10px; font-size: 10px; letter-spacing: 0.12em; }
 
-      .pab-hero-left { padding: 28px 18px 36px; }
-      .pab-display { font-size: clamp(40px, 14vw, 60px); margin-bottom: 18px; }
-      .pab-sub { font-size: 16px; margin-bottom: 24px; }
+      .pab-display {
+        padding-top: clamp(24px, 4vh, 36px);
+        font-size: clamp(40px, 13vw, 56px);
+        margin-bottom: clamp(16px, 2.4vh, 22px);
+      }
+      .pab-sub { font-size: 16px; margin-top: clamp(22px, 3.5vh, 30px); margin-bottom: 22px; }
 
       .pab-form-wrap .formkit-form .formkit-fields { flex-direction: column !important; }
       .pab-form-wrap .formkit-form .formkit-submit > span { padding: 15px 20px !important; }
 
+      .pab-cd { margin-top: clamp(18px, 3vh, 28px); }
       .pab-cd-num { font-size: clamp(24px, 9vw, 34px); }
 
-      .pab-hero-right { height: 50vh; min-height: 320px; }
-      .pab-statue { height: min(84%, 380px); }
-      .pab-quote { width: clamp(260px, 86vw, 380px); padding: 16px 18px 18px; }
+      /* compact sky band */
+      .pab-hero-right { height: clamp(280px, 40vh, 360px); }
+      .pab-statue { height: min(82%, 320px); }
+      .pab-quote {
+        top: clamp(16px, 3vh, 28px);
+        width: clamp(250px, 82vw, 360px);
+        padding: 16px 18px 18px;
+      }
       .pab-quote-name { font-size: 16px; }
       .pab-quote-body { font-size: 16px; }
     }
@@ -462,7 +525,12 @@
           </span>
         </a>
       </div>
-      <div class="pab-topbar-right" aria-hidden="true"></div>
+      <div class="pab-topbar-right">
+        <span class="pab-date-pill">
+          <span class="pab-pulse" aria-hidden="true"></span>
+          <span>Jun 22</span>
+        </span>
+      </div>
     </header>
 
     <!-- ═══════════════ HERO ═══════════════ -->
