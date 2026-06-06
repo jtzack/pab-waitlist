@@ -165,7 +165,7 @@
     .pab-display {
       font-family: var(--font-display);
       font-weight: 900;
-      font-size: clamp(34px, 6.2vh, 76px);
+      font-size: clamp(38px, 7.2vh, 86px);
       line-height: 0.92;
       letter-spacing: 0.005em;
       text-transform: uppercase;
@@ -255,7 +255,7 @@
       position: absolute;
       bottom: 0; left: 50%;
       transform: translateX(-50%);
-      height: min(96%, 760px);
+      height: min(76%, 600px);
       width: auto;
       display: block;
       z-index: 1;
@@ -264,29 +264,29 @@
     /* Wingman / Slack chat bubble — large chiseled white card near the head */
     .pab-quote {
       position: absolute;
-      top: clamp(20px, 5vh, 56px);
-      right: clamp(16px, 3vw, 52px);
-      width: clamp(300px, 28vw, 440px);
+      top: clamp(40px, 26%, 200px);
+      right: clamp(16px, 3vw, 56px);
+      width: clamp(340px, 33vw, 540px);
       background: var(--stone-0);
       border: 2px solid var(--obsidian-0);
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-hard-lg);
-      padding: 18px 20px 20px;
+      padding: 20px 24px 22px;
       z-index: 3;
     }
     .pab-quote::after {
       content: "";
       position: absolute;
-      bottom: -11px; left: 34px;
-      width: 18px; height: 18px;
+      bottom: -12px; left: 38px;
+      width: 20px; height: 20px;
       background: var(--stone-0);
       border-right: 2px solid var(--obsidian-0);
       border-bottom: 2px solid var(--obsidian-0);
       transform: rotate(45deg);
     }
-    .pab-quote-head { display: flex; align-items: center; gap: 9px; margin-bottom: 12px; }
+    .pab-quote-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
     .pab-quote-emblem {
-      width: 26px; height: 26px;
+      width: 30px; height: 30px;
       border: 2px solid var(--obsidian-0);
       border-radius: var(--radius-xs);
       display: flex; align-items: center; justify-content: center;
@@ -297,13 +297,13 @@
       background: var(--laser-1);
       box-shadow: 0 0 5px rgba(255,59,48,0.95);
     }
-    .pab-quote-name { font-family: var(--font-sans); font-weight: 700; font-size: 16px; color: var(--obsidian-0); }
-    .pab-quote-app  { font-family: var(--font-sans); font-size: 13px; color: var(--obsidian-4); }
-    .pab-quote-time { margin-left: auto; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; color: var(--obsidian-4); }
-    .pab-quote-body { font-family: var(--font-sans); font-size: 16px; line-height: 1.5; color: var(--obsidian-1); }
+    .pab-quote-name { font-family: var(--font-sans); font-weight: 700; font-size: 18px; color: var(--obsidian-0); }
+    .pab-quote-app  { font-family: var(--font-sans); font-size: 14px; color: var(--obsidian-4); }
+    .pab-quote-time { margin-left: auto; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; color: var(--obsidian-4); }
+    .pab-quote-body { font-family: var(--font-sans); font-size: 17px; line-height: 1.55; color: var(--obsidian-1); }
     .pab-quote-body strong { font-weight: 700; color: var(--obsidian-0); }
     .pab-quote-body p { margin: 0; }
-    .pab-quote-body p + p { margin-top: 12px; font-weight: 700; color: var(--obsidian-0); }
+    .pab-quote-body p + p { margin-top: 14px; font-weight: 700; color: var(--obsidian-0); }
 
     /* ─── KIT FORM OVERRIDES ─── */
     .pab-form-wrap .formkit-form {
@@ -397,12 +397,12 @@
       .pab-hero { grid-template-columns: 1fr; }
       .pab-hero-left { order: 1; padding: clamp(28px, 5vh, 56px) clamp(20px, 6vw, 48px); }
       .pab-hero-content { max-width: 640px; margin: 0 auto; }
-      .pab-hero-right { order: 2; height: 60vh; min-height: 380px; }
-      .pab-statue { height: min(98%, 560px); }
+      .pab-hero-right { order: 2; height: 62vh; min-height: 420px; }
+      .pab-statue { height: min(82%, 480px); }
       .pab-quote {
-        top: clamp(20px, 4vh, 40px);
+        top: clamp(24px, 22%, 120px);
         right: clamp(16px, 5vw, 40px);
-        width: clamp(260px, 60vw, 380px);
+        width: clamp(300px, 66vw, 460px);
       }
       /* restore comfortable type sizes when stacked (height no longer the constraint) */
       .pab-display { font-size: clamp(48px, 11vw, 88px); margin-bottom: 22px; }
@@ -428,10 +428,11 @@
 
       .pab-cd-num { font-size: clamp(24px, 9vw, 34px); }
 
-      .pab-hero-right { height: 46vh; min-height: 300px; }
-      .pab-statue { height: min(98%, 440px); }
-      .pab-quote { width: clamp(230px, 82vw, 320px); padding: 14px 16px 16px; }
-      .pab-quote-name, .pab-quote-body { font-size: 15px; }
+      .pab-hero-right { height: 50vh; min-height: 320px; }
+      .pab-statue { height: min(84%, 380px); }
+      .pab-quote { width: clamp(260px, 86vw, 380px); padding: 16px 18px 18px; }
+      .pab-quote-name { font-size: 16px; }
+      .pab-quote-body { font-size: 16px; }
     }
   </style>
 </head>
